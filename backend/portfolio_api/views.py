@@ -6,8 +6,8 @@ PROFILE = {
     "role": "Full-Stack Developer",
     "location": "Madrid, España",
     "bio": (
-        "Desarrollador Full-Stack con experiencia en frontend (React, Angular, "
-        "Vue) y backend (Python y .NET). Apasionado por la tecnología, la "
+        "Desarrollador Full-Stack con experiencia en frontend (React, Angular) "
+        "y backend (Python y .NET). Apasionado por la tecnología, la "
         "optimización de sistemas y la automatización de procesos."
     ),
     "links": {

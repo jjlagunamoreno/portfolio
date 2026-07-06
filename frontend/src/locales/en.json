@@ -1,0 +1,13 @@
+{
+  "name": "Jaime Jesús Laguna Moreno",
+  "role": "Full-Stack Developer",
+  "location": "Madrid, Spain",
+  "bio": "Full-Stack developer with frontend experience (React, Angular) and backend (Python and .NET). Passionate about technology, systems optimization and process automation.",
+  "underConstruction": "Site under construction",
+  "nav": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  },
+  "rights": "All rights reserved"
+}
