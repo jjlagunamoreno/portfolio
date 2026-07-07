@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import es from './locales/es.json'
 import en from './locales/en.json'
 
@@ -19,11 +18,13 @@ const fallbackLinks: Links = {
   email: 'jjlagunamoreno@gmail.com',
 }
 
+const linkClass =
+  'px-5 py-2.5 rounded-xl border border-zinc-800 font-semibold text-zinc-100 no-underline transition hover:-translate-y-0.5 hover:border-purple-500 hover:text-purple-400'
+
 function App() {
-  const [lang, setLang] = useState<Lang>(() => {
-    const saved = localStorage.getItem('lang')
-    return saved === 'en' ? 'en' : 'es'
-  })
+  const [lang, setLang] = useState<Lang>(() =>
+    localStorage.getItem('lang') === 'en' ? 'en' : 'es',
+  )
   const [links, setLinks] = useState<Links>(fallbackLinks)
 
   useEffect(() => {
@@ -49,54 +50,53 @@ function App() {
     .join('')
 
   return (
-    <main className="page">
-      <div className="lang-switch" role="group" aria-label="Idioma / Language">
-        <button
-          type="button"
-          className={`lang-btn ${lang === 'es' ? 'active' : ''}`}
-          onClick={() => setLang('es')}
-          aria-pressed={lang === 'es'}
-        >
-          ES
-        </button>
-        <button
-          type="button"
-          className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-          onClick={() => setLang('en')}
-          aria-pressed={lang === 'en'}
-        >
-          EN
-        </button>
+    <main className="min-h-dvh flex flex-col items-center justify-center gap-6 p-6 text-zinc-100">
+      <div className="fixed top-5 right-5 flex gap-1 p-1 rounded-xl border border-zinc-800 bg-zinc-900">
+        {(['es', 'en'] as const).map((code) => (
+          <button
+            key={code}
+            type="button"
+            onClick={() => setLang(code)}
+            aria-pressed={lang === code}
+            className={`px-3 py-1.5 rounded-lg text-sm font-bold uppercase transition ${
+              lang === code
+                ? 'bg-purple-500 text-white'
+                : 'text-zinc-400 hover:text-zinc-200'
+            }`}
+          >
+            {code}
+          </button>
+        ))}
       </div>
 
-      <section className="card">
-        <div className="badge">🚧 {t.underConstruction}</div>
+      <div className="w-full max-w-lg flex items-center justify-center gap-2 rounded-2xl border border-amber-500/40 bg-amber-500/10 px-5 py-4 text-lg font-bold text-amber-200">
+        🚧 {t.underConstruction}
+      </div>
 
-        <div className="avatar" aria-hidden="true">
+      <section className="w-full max-w-lg rounded-2xl border border-zinc-800 bg-zinc-900 p-10 text-center shadow-2xl">
+        <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-purple-800 text-3xl font-bold text-white">
           {initials}
         </div>
-        <h1 className="name">{t.name}</h1>
-        <p className="role">{t.role}</p>
-        <p className="location">{t.location}</p>
-        <p className="bio">{t.bio}</p>
+        <h1 className="text-2xl font-bold">{t.name}</h1>
+        <p className="mt-1 font-semibold text-purple-400">{t.role}</p>
+        <p className="mb-5 text-sm text-zinc-400">{t.location}</p>
+        <p className="mx-auto mb-7 max-w-md leading-relaxed text-zinc-400">{t.bio}</p>
 
-        <nav className="links" aria-label="Links">
-          <a className="link" href={links.github} target="_blank" rel="noreferrer">
+        <nav className="flex flex-wrap justify-center gap-3" aria-label="Links">
+          <a className={linkClass} href={links.github} target="_blank" rel="noreferrer">
             {t.nav.github}
           </a>
-          <a className="link" href={links.linkedin} target="_blank" rel="noreferrer">
+          <a className={linkClass} href={links.linkedin} target="_blank" rel="noreferrer">
             {t.nav.linkedin}
           </a>
-          <a className="link" href={`mailto:${links.email}`}>
+          <a className={linkClass} href={`mailto:${links.email}`}>
             {t.nav.email}
           </a>
         </nav>
       </section>
 
-      <footer className="footer">
-        <span>
-          &copy; {new Date().getFullYear()} {t.name} · {t.rights}
-        </span>
+      <footer className="text-sm text-zinc-400">
+        &copy; {new Date().getFullYear()} {t.name} · {t.rights}
       </footer>
     </main>
   )

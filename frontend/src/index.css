@@ -1,29 +1,7 @@
-:root {
-  --bg: #0f0f11;
-  --surface: #17171b;
-  --border: #2a2a31;
-  --text: #f5f5f7;
-  --muted: #a1a1aa;
-  --accent: #a855f7;
-  --accent-strong: #6b21a8;
+@import "tailwindcss";
 
+html {
   color-scheme: dark;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
 }
 
 body {
@@ -31,14 +9,5 @@ body {
   background:
     radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.12), transparent 40%),
     radial-gradient(circle at 80% 0%, rgba(107, 33, 168, 0.14), transparent 45%),
-    var(--bg);
-  color: var(--text);
-}
-
-#root {
-  min-height: 100dvh;
-}
-
-a {
-  color: var(--accent);
+    #0f0f11;
 }
